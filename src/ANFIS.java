@@ -12,9 +12,10 @@ public class ANFIS {
     private final double[] cArray;
     private final double[] sigmaArray;
     private final double[][] constantsArray;
+    private final double tableResult;
     Random random;
 
-    ANFIS(double[] inputValues, int rulesNumber){
+    ANFIS(double[] inputValues, int rulesNumber, double tableResult){
         random = new Random();
 
         this.values = Arrays.copyOf(inputValues, inputValues.length);
@@ -31,11 +32,33 @@ public class ANFIS {
         this.cArray = new double[inputValues.length * rulesNumber];
         this.sigmaArray = new double[inputValues.length * rulesNumber];
         this.constantsArray = new double[rulesNumber][inputValues.length];
+        this.tableResult = tableResult;
 
         randomFill(cArray);
         randomFill(sigmaArray);
         for (int i = 0; i < constantsArray.length; ++i)
             this.constantsArray[i] = randomFill(constantsArray[i]);
+    }
+
+    ANFIS(double[] inputValues, int rulesNumber,
+          double[] cArray, double[] sigmaArray, double[][] constantsArray, double tableResult) {
+        random = new Random();
+
+        this.values = Arrays.copyOf(inputValues, inputValues.length);
+        this.rulesNumber = rulesNumber;
+
+        this.firstLayer = new PhasificationNeurons[inputValues.length * rulesNumber];
+        for (int i = 0; i < firstLayer.length; ++i)
+            firstLayer[i] = new PhasificationNeurons();
+
+        this.fourthLayer = new AggregationNeurons[rulesNumber];
+        for (int i = 0; i < fourthLayer.length; ++i)
+            fourthLayer[i] = new AggregationNeurons(inputValues.length);
+
+        this.cArray = Arrays.copyOf(cArray, cArray.length);
+        this.sigmaArray = Arrays.copyOf(sigmaArray,sigmaArray.length);
+        this.constantsArray = Arrays.copyOf(constantsArray,constantsArray.length);
+        this.tableResult = tableResult;
     }
 
     public void startCalculations() {
@@ -97,8 +120,30 @@ public class ANFIS {
         return arrayToFill;
     }
 
-    public double getResult(){
-        return this.result;
+    public double getError() {
+        return (this.result - tableResult);
+    }
+
+    public double[] getValues(){
+        return this.values;
+    }
+    public int getRulesNumber(){
+        return this.rulesNumber;
+    }
+    public double[] getCArray(){
+        return this.cArray;
+    }
+
+    public double[] getSigmaArray(){
+        return this.sigmaArray;
+    }
+
+    public double[][] getConstantsArray(){
+        return this.constantsArray;
+    }
+
+    public double getTableResult(){
+        return this.tableResult;
     }
 
 }

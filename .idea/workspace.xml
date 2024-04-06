@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="ANFIS is DONE!">
+    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="done but there is one moment">
+      <change afterPath="$PROJECT_DIR$/src/EvolutionAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ANFIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ANFIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -55,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712407844318</updated>
-      <workItem from="1712407845397" duration="9824000" />
+      <workItem from="1712407845397" duration="17375000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes for each neuron">
       <option name="closed" value="true" />
@@ -100,6 +103,27 @@
     <MESSAGE value="Added classes for each neuron" />
     <MESSAGE value="The functionality of the first layer is realized" />
     <MESSAGE value="ANFIS is DONE!" />
-    <option name="LAST_COMMIT_MESSAGE" value="ANFIS is DONE!" />
+    <MESSAGE value="done but there is one moment" />
+    <option name="LAST_COMMIT_MESSAGE" value="done but there is one moment" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="15" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="population.get(2)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
