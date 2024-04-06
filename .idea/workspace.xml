@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="" />
+    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="Added classes for each neuron">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ANFIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ANFIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AggregationNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/AggregationNeurons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DephasificationNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/DephasificationNeurons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PhasificationNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/PhasificationNeurons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SecondLayerNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/SecondLayerNeurons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThirdLayerNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/ThirdLayerNeurons.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
@@ -23,8 +43,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -36,8 +61,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712407844318</updated>
-      <workItem from="1712407845397" duration="1000" />
+      <workItem from="1712407845397" duration="1828000" />
     </task>
+    <task id="LOCAL-00001" summary="Added classes for each neuron">
+      <option name="closed" value="true" />
+      <created>1712408595691</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712408595691</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new repo" />
+    <MESSAGE value="Added classes for each neuron" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added classes for each neuron" />
   </component>
 </project>
