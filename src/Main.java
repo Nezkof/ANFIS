@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        double[][] data = {
+/*        double[][] data = {
                 {1, 32, 3, 3.141362},
                 {2, 32, 2, 6.29715},
                 {3, 45, 3, 0.316198},
@@ -28,16 +28,43 @@ public class Main {
                 {12, 21, 34, 0},
                 {14, 14, 14, 0},
                 {20, 20, 20, 0}
+        };*/
+
+        double[][] data = {
+                {1, 2, 3, 6},    // x1 = 1, x2 = 2, x3 = 3, y = 6
+                {4, 5, 6, 15},   // x1 = 4, x2 = 5, x3 = 6, y = 15
+                {7, 8, 9, 24},   // x1 = 7, x2 = 8, x3 = 9, y = 24
+                {10, 11, 12, 33},// x1 = 10, x2 = 11, x3 = 12, y = 33
+                {13, 14, 15, 42},// x1 = 13, x2 = 14, x3 = 15, y = 42
+                {16, 17, 18, 51},// x1 = 16, x2 = 17, x3 = 18, y = 51
+                {19, 20, 21, 60},// x1 = 19, x2 = 20, x3 = 21, y = 60
+                {22, 23, 24, 69},// x1 = 22, x2 = 23, x3 = 24, y = 69
+                {25, 26, 27, 78},// x1 = 25, x2 = 26, x3 = 27, y = 78
+                {28, 29, 30, 87},// x1 = 28, x2 = 29, x3 = 30, y = 87
+                {31, 32, 33, 96},// x1 = 31, x2 = 32, x3 = 33, y = 96
+                {34, 35, 36, 105},// x1 = 34, x2 = 35, x3 = 36, y = 105
+                {37, 38, 39, 114},// x1 = 37, x2 = 38, x3 = 39, y = 114
+                {40, 41, 42, 123},// x1 = 40, x2 = 41, x3 = 42, y = 123
+                {43, 44, 45, 132},// x1 = 43, x2 = 44, x3 = 45, y = 132
+                {46, 47, 48, 141},// x1 = 46, x2 = 47, x3 = 48, y = 141
+                {49, 50, 51, 150},// x1 = 49, x2 = 50, x3 = 51, y = 150
+                {52, 53, 54, 159},// x1 = 52, x2 = 53, x3 = 54, y = 159
         };
 
         EvolutionAlgorithm evolutionAlgorithm = new EvolutionAlgorithm(
-                200, 4, 100000,
-                0.05, 0.01, data, 24,2);
+                2000, 4, 100,
+                0.02, 0.5, data, 18,2);
 
         evolutionAlgorithm.StartEvolution();
-//        ANFIS anfis = new ANFIS(new double[] {1,2,3}, 2);
-//
-//        anfis.startCalculations();
-//        System.out.println(anfis.getResult());
+        ANFIS individ = evolutionAlgorithm.getBestIndivid();
+
+        individ.startCalculations();
+        System.out.println(individ.getError());
+
+        ANFIS anfis = new ANFIS(new double[] {53,53,53}, 2,
+                individ.getCArray(), individ.getSigmaArray(), individ.getConstantsArray(), 0);
+
+        anfis.startCalculations();
+        System.out.println(anfis.getError());
     }
 }

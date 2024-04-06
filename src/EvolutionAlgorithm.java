@@ -54,11 +54,13 @@ public class EvolutionAlgorithm {
             calculatePopulationScores();
             addChilds();
             calculatePopulationScores();
-            formNewPopulation();
-            if (epoch >= 60)
-                System.out.println("this");
-            System.out.println(epoch + " " + this.bestPopulationScore);
             mutateAllIndivids();
+            formNewPopulation();
+
+            if (epoch >= 97)
+                System.out.println(" ");
+            System.out.println(epoch + " " + this.bestPopulationScore);
+
         }
     }
 
@@ -147,8 +149,6 @@ public class EvolutionAlgorithm {
         population.addAll(selectedPopulation);
     }
 
-
-
     private ANFIS tournamentSelection() {
         ANFIS bestIndividual = null;
         double bestScore = Double.MAX_VALUE;
@@ -174,6 +174,25 @@ public class EvolutionAlgorithm {
             individ.startCalculations();
             populationScores.add(individ.getError());
         }
+    }
+
+    public ANFIS getBestIndivid() {
+        if (population.isEmpty()) {
+            return null;
+        }
+
+        ANFIS bestIndivid = population.get(0);
+        double bestScore = bestIndivid.getError();
+
+        for (ANFIS individ : population) {
+            double score = individ.getError();
+            if (score < bestScore) {
+                bestIndivid = individ;
+                bestScore = score;
+            }
+        }
+
+        return bestIndivid;
     }
 
 }

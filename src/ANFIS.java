@@ -65,7 +65,7 @@ public class ANFIS {
         inputValues(); //first layer
         double[] wValues = calculateWValues(); //second layer
         normalizeWValues(wValues); //third layer
-        double[] qValues = calculateAggregatedValues(wValues); //fourthLayer
+        double[] qValues = calculateAggregatedValues(wValues); //fourth Layer
 
         for (double qValue : qValues)
             this.result += qValue;
@@ -121,7 +121,7 @@ public class ANFIS {
     }
 
     public double getError() {
-        return (this.result - tableResult);
+        return (Math.abs(this.result - tableResult));
     }
 
     public double[] getValues(){
