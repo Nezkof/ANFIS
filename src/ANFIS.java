@@ -1,17 +1,14 @@
 import neurons.*;
 
 import java.util.Arrays;
-import java.util.PrimitiveIterator;
 import java.util.Random;
-import java.util.jar.Manifest;
 
 public class ANFIS {
     private double[] values;
     private int rulesNumber;
+    private double result;
     private PhasificationNeurons[] firstLayer;
-    private ThirdLayerNeurons[] thirdLayer;
     private AggregationNeurons[] fourthLayer;
-    private DephasificationNeurons fifthLayer;
     private double[] cArray;
     private double[] sigmaArray;
     private double[][] constantsArray;
@@ -27,15 +24,10 @@ public class ANFIS {
             for (int i = 0; i < firstLayer.length; ++i)
                 firstLayer[i] = new PhasificationNeurons();
 
-        this.thirdLayer = new ThirdLayerNeurons[rulesNumber];
-            for (int i = 0; i < thirdLayer.length; ++i)
-                thirdLayer[i] = new ThirdLayerNeurons();
-
         this.fourthLayer = new AggregationNeurons[rulesNumber];
             for (int i = 0; i < fourthLayer.length; ++i)
-                fourthLayer[i] = new AggregationNeurons();
+                fourthLayer[i] = new AggregationNeurons(inputValues.length);
 
-        this.fifthLayer = new DephasificationNeurons();
         this.cArray = new double[inputValues.length * rulesNumber];
         this.sigmaArray = new double[inputValues.length * rulesNumber];
         this.constantsArray = new double[rulesNumber][inputValues.length];
@@ -46,27 +38,14 @@ public class ANFIS {
             this.constantsArray[i] = randomFill(constantsArray[i]);
     }
 
-    /*ANFIS(double[] inputValues, int rulesNumber, double[] cArray, double[] sigmaArray, double[][] constantsArray) {
-        random = new Random();
-
-        this.values = Arrays.copyOf(inputValues, inputValues.length);
-        this.rulesNumber = rulesNumber;
-
-        this.firstLayer = new PhasificationNeurons[inputValues.length * rulesNumber];
-        this.secondLayer = new SecondLayerNeurons[rulesNumber];
-        this.thirdLayer = new ThirdLayerNeurons[rulesNumber];
-        this.fourthLayer = new AggregationNeurons[rulesNumber];
-        this.fifthLayer = new DephasificationNeurons();
-
-        this.cArray = Arrays.copyOf(cArray, cArray.length);
-        this.sigmaArray = Arrays.copyOf(sigmaArray, sigmaArray.length);
-        this.constantsArray = Arrays.copyOf(constantsArray, constantsArray.length);
-    }*/
-
     public void startCalculations() {
-        inputValues();
-        double[] wValues = calculateWValues();
+        inputValues(); //first layer
+        double[] wValues = calculateWValues(); //second layer
+        normalizeWValues(wValues); //third layer
+        double[] qValues = calculateAggregatedValues(wValues); //fourthLayer
 
+        for (double qValue : qValues)
+            this.result += qValue;
     }
 
     private void inputValues() {
@@ -81,22 +60,45 @@ public class ANFIS {
         }
     }
 
-    double[] calculateWValues(){
+    private double[] calculateWValues(){
         double[] wArray = new double[rulesNumber];
 
-        for (int i = 0; i < wArray.length; ++i) {
-            for (int j = i; j < firstLayer.length; j += rulesNumber) {
+        for (int i = 0; i < wArray.length; ++i)
+            for (int j = i; j < firstLayer.length; j += rulesNumber)
                 wArray[i] += firstLayer[j].getPhasiValue();
-            }
-        }
 
         return wArray;
+    }
+
+    private void normalizeWValues(double[] wValues) {
+        double wValuesSum = 0;
+        for (double wValue : wValues)
+            wValuesSum += wValue;
+
+        for (int i = 0; i < wValues.length; ++i)
+            wValues[i] = wValues[i]/wValuesSum;
+    }
+
+    private double[] calculateAggregatedValues(double[] wValues) {
+        double[] qValues = new double[rulesNumber];
+
+        for (int i = 0; i < fourthLayer.length; ++i){
+            fourthLayer[i].setW(wValues[i]);
+            fourthLayer[i].setConstants(this.constantsArray[i]);
+            fourthLayer[i].setVariables(this.values);
+            qValues[i] = fourthLayer[i].calculateQ();
+        }
+        return qValues;
     }
 
     private double[] randomFill(double[] arrayToFill) {
         for (int i = 0; i < arrayToFill.length; ++i)
             arrayToFill[i] = random.nextInt(999);
         return arrayToFill;
+    }
+
+    public double getResult(){
+        return this.result;
     }
 
 }

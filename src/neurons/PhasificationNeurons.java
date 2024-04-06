@@ -11,7 +11,6 @@ public class PhasificationNeurons {
         this.sigma = 0;
     }
 
-
     public double getPhasiValue() {
         return (Math.exp(-Math.pow((x-c)/sigma,2)));
     }

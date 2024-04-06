@@ -3,5 +3,6 @@ public class Main {
         ANFIS anfis = new ANFIS(new double[] {1,2,3}, 2);
 
         anfis.startCalculations();
+        System.out.println(anfis.getResult());
     }
 }
