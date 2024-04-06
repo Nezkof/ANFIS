@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class ANFIS {
-    private double[] values;
-    private int rulesNumber;
+    private final double[] values;
+    private final int rulesNumber;
     private double result;
-    private PhasificationNeurons[] firstLayer;
-    private AggregationNeurons[] fourthLayer;
-    private double[] cArray;
-    private double[] sigmaArray;
-    private double[][] constantsArray;
+    private final PhasificationNeurons[] firstLayer;
+    private final AggregationNeurons[] fourthLayer;
+    private final double[] cArray;
+    private final double[] sigmaArray;
+    private final double[][] constantsArray;
     Random random;
 
     ANFIS(double[] inputValues, int rulesNumber){
