@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ANFIS anfis = new ANFIS(new double[] {1,2,3}, 2);
+
+        anfis.startCalculations();
     }
 }
