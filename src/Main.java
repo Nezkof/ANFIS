@@ -32,7 +32,7 @@ public class Main {
 
         EvolutionAlgorithm evolutionAlgorithm = new EvolutionAlgorithm(
                 200, 4, 100000,
-                0.05, 0.05, data, 24,2);
+                0.05, 0.01, data, 24,2);
 
         evolutionAlgorithm.StartEvolution();
 //        ANFIS anfis = new ANFIS(new double[] {1,2,3}, 2);

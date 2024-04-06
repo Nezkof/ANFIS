@@ -116,7 +116,7 @@ public class ANFIS {
 
     private double[] randomFill(double[] arrayToFill) {
         for (int i = 0; i < arrayToFill.length; ++i)
-            arrayToFill[i] = random.nextInt(999);
+            arrayToFill[i] = random.nextInt(20);
         return arrayToFill;
     }
 

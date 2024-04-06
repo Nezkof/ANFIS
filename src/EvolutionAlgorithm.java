@@ -55,7 +55,9 @@ public class EvolutionAlgorithm {
             addChilds();
             calculatePopulationScores();
             formNewPopulation();
-            System.out.println(this.bestPopulationScore);
+            if (epoch >= 60)
+                System.out.println("this");
+            System.out.println(epoch + " " + this.bestPopulationScore);
             mutateAllIndivids();
         }
     }
@@ -109,21 +111,21 @@ public class EvolutionAlgorithm {
     }
 
     private void mutateAllIndivids() {
-        for (int i = 0; i < population.size(); ++i){
-            double[] individCArray = population.get(i).getCArray();
-            double[] individSigmaArray = population.get(i).getSigmaArray();
-            double[][] individConstantsArray = population.get(i).getConstantsArray();
+        for (ANFIS anfis : population) {
+            double[] individCArray = anfis.getCArray();
+            double[] individSigmaArray = anfis.getSigmaArray();
+            double[][] individConstantsArray = anfis.getConstantsArray();
 
-            for (int a = 0; a < individCArray.length; ++a){
+            for (int a = 0; a < individCArray.length; ++a) {
                 individCArray[a] += scaleToRange(random.nextGaussian(), -sigma, sigma);
             }
 
-            for (int a = 0; a < individSigmaArray.length; ++a){
+            for (int a = 0; a < individSigmaArray.length; ++a) {
                 individSigmaArray[a] += scaleToRange(random.nextGaussian(), -sigma, sigma);
             }
 
-            for (int a = 0; a < individConstantsArray.length; ++a){
-                for (int b = 0; b < individConstantsArray[0].length; ++b){
+            for (int a = 0; a < individConstantsArray.length; ++a) {
+                for (int b = 0; b < individConstantsArray[0].length; ++b) {
                     individConstantsArray[a][b] += scaleToRange(random.nextGaussian(), -sigma, sigma);
                 }
             }
@@ -145,6 +147,8 @@ public class EvolutionAlgorithm {
         population.addAll(selectedPopulation);
     }
 
+
+
     private ANFIS tournamentSelection() {
         ANFIS bestIndividual = null;
         double bestScore = Double.MAX_VALUE;
@@ -153,7 +157,7 @@ public class EvolutionAlgorithm {
             int randomIndex = random.nextInt(population.size());
             double score = populationScores.get(randomIndex);
 
-            if (score < bestScore && score >= 0) {
+            if (score < bestScore) {
                 bestIndividual = population.get(randomIndex);
                 bestScore = score;
             }
