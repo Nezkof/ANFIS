@@ -1,14 +1,18 @@
 package neurons;
 
+import java.util.Random;
+
 public class PhasificationNeurons {
     double x;
     double mean;
     double sigma;
 
     public PhasificationNeurons(){
+        Random random = new Random();
+
         this.x = 0;
-        this.mean = 0;
-        this.sigma = 0;
+        this.mean = random.nextDouble(10);
+        this.sigma = random.nextDouble(10);
     }
 
     public double getPhasiValue() {
@@ -19,8 +23,8 @@ public class PhasificationNeurons {
         this.x = x;
     }
 
-    public void setC(double c) {
-        this.mean = c;
+    public void setMean(double mean) {
+        this.mean = mean;
     }
 
     public void setSigma(double sigma) {

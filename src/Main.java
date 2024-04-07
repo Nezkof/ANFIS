@@ -51,6 +51,10 @@ public class Main {
                 {52, 53, 54, 159},// x1 = 52, x2 = 53, x3 = 54, y = 159
         };*/
 
-        ANFIS anfis = new ANFIS(data);
+        ANFIS anfis = new ANFIS(data, 1000, 0.3);
+
+        anfis.startTraining();
+
+
     }
 }
