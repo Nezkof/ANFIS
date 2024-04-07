@@ -31,5 +31,8 @@ public class PhasificationNeurons {
         this.sigma = sigma;
     }
 
+    public double getMean() { return this.mean;}
+    public double getSigma() { return  this.sigma;}
+
 
 }

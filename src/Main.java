@@ -33,7 +33,7 @@ public class Main {
                 {0.3584, 0.2567, 0.2432}
         };
 
-        ANFIS anfis = new ANFIS(data, 300, 0.4, 0.001);
+        ANFIS anfis = new ANFIS(data, 300, 0.2, 0.001);
 
         anfis.startTraining();
 
