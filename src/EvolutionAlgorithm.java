@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class EvolutionAlgorithm {
+/*
     private final List<ANFIS> population;
     private final int parentsNumber;
     private final int childsPerParent;
@@ -194,5 +195,6 @@ public class EvolutionAlgorithm {
 
         return bestIndivid;
     }
+*/
 
 }

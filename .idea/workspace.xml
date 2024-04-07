@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="">
+    <list default="true" id="1c7a3b13-b4d7-4dab-988c-901db39d32e3" name="Changes" comment="ANFIS before changes (V1)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ANFIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ANFIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EvolutionAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EvolutionAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/neurons/PhasificationNeurons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neurons/PhasificationNeurons.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +62,7 @@
       <workItem from="1712407845397" duration="20531000" />
       <workItem from="1712428948529" duration="3376000" />
       <workItem from="1712432445135" duration="2479000" />
-      <workItem from="1712485427444" duration="647000" />
+      <workItem from="1712485427444" duration="1819000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes for each neuron">
       <option name="closed" value="true" />
@@ -117,11 +120,30 @@
       <option name="project" value="LOCAL" />
       <updated>1712434102392</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ANFIS before changes (V1)">
+      <option name="closed" value="true" />
+      <created>1712486634685</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712486634685</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new repo" />
@@ -131,7 +153,8 @@
     <MESSAGE value="done but there is one moment" />
     <MESSAGE value="test before changes" />
     <MESSAGE value="fuck this shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="fuck this shit" />
+    <MESSAGE value="ANFIS before changes (V1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ANFIS before changes (V1)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

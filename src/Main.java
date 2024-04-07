@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-/*        double[][] data = {
+        double[][] data = {
                 {1, 32, 3, 3.141362},
                 {2, 32, 2, 6.29715},
                 {3, 45, 3, 0.316198},
@@ -25,12 +25,12 @@ public class Main {
                 {23, 21, 16, 2.905126},
                 {54, 43, 38, 0.849992},
                 {34, 21, 43, 1.380608},
-                {12, 21, 34, 0},
+/*                {12, 21, 34, 0},
                 {14, 14, 14, 0},
-                {20, 20, 20, 0}
-        };*/
+                {20, 20, 20, 0}*/
+        };
 
-        double[][] data = {
+        /*double[][] data = {
                 {1, 2, 3, 6},    // x1 = 1, x2 = 2, x3 = 3, y = 6
                 {4, 5, 6, 15},   // x1 = 4, x2 = 5, x3 = 6, y = 15
                 {7, 8, 9, 24},   // x1 = 7, x2 = 8, x3 = 9, y = 24
@@ -49,22 +49,8 @@ public class Main {
                 {46, 47, 48, 141},// x1 = 46, x2 = 47, x3 = 48, y = 141
                 {49, 50, 51, 150},// x1 = 49, x2 = 50, x3 = 51, y = 150
                 {52, 53, 54, 159},// x1 = 52, x2 = 53, x3 = 54, y = 159
-        };
+        };*/
 
-        EvolutionAlgorithm evolutionAlgorithm = new EvolutionAlgorithm(
-                2000, 4, 100,
-                0.02, 0.5, data, 18,2);
-
-        evolutionAlgorithm.StartEvolution();
-        ANFIS individ = evolutionAlgorithm.getBestIndivid();
-
-        individ.startCalculations();
-        System.out.println(individ.getError());
-
-        ANFIS anfis = new ANFIS(new double[] {53,53,53}, 2,
-                individ.getCArray(), individ.getSigmaArray(), individ.getConstantsArray(), 0);
-
-        anfis.startCalculations();
-        System.out.println(anfis.getError());
+        ANFIS anfis = new ANFIS(data);
     }
 }
