@@ -7,15 +7,17 @@ public class ANFIS {
     private double[][] inputData;
     private int epochsNumber;
     private double learningRate;
+    private double eps;
     private PhasificationNeurons[] firstLayerNeurons;
     private AggregationNeurons[] fourthLayerNeurons;
 
-    ANFIS(double[][] inputData, int epochsNumber, double learningRate){
+    ANFIS(double[][] inputData, int epochsNumber, double learningRate, double eps){
         this.inputData = inputData;
         normalizeData();
 
         this.epochsNumber = epochsNumber;
         this.learningRate = learningRate;
+        this.eps = eps;
 
         this.firstLayerNeurons = new PhasificationNeurons[(inputData[0].length - 1) * RULES_NUMBER];
         for (int i = 0; i < firstLayerNeurons.length; ++i)
@@ -39,7 +41,7 @@ public class ANFIS {
                     firstLayerNeurons[i].setX(row[1]);
 
                 for (int i = 6; i < firstLayerNeurons.length; ++i)
-                    firstLayerNeurons[i].setX(row[3]);
+                    firstLayerNeurons[i].setX(row[2]);
 
                 double[] weightsArray = new double[RULES_NUMBER];
 
@@ -70,8 +72,10 @@ public class ANFIS {
                 startCorrection(error);
                 epochError += error;
             }
+            if (epochError < eps)
+                break;
             epochError /= 24;
-            System.out.println(epochError);
+            System.out.println("#" + (epoch+1) + " Похибка " + epochError);
         }
     }
 
@@ -90,7 +94,91 @@ public class ANFIS {
 
             fourthLayerNeurons[i].correctConstants(learningRate, error, numerator/denominator);
         }
+    }
 
+    public void startTesting(double[][] dataForTests){
+        /*System.out.println("================================================");
+        for (double[] row : inputData) {
+
+            //first and seconds layers
+            for (int i = 0; i < 3; ++i)
+                firstLayerNeurons[i].setX(row[0]);
+
+            for (int i = 3; i < 6; ++i)
+                firstLayerNeurons[i].setX(row[1]);
+
+            for (int i = 6; i < firstLayerNeurons.length; ++i)
+                firstLayerNeurons[i].setX(row[2]);
+
+            double[] weightsArray = new double[RULES_NUMBER];
+
+            for (int i = 0; i < weightsArray.length; ++i){
+                for (int j = i; j < firstLayerNeurons.length; j += RULES_NUMBER){
+                    weightsArray[i] += firstLayerNeurons[j].getPhasiValue();
+                }
+            }
+
+            //third layer
+            double weightsSum = Arrays.stream(weightsArray).sum();
+            for (int i = 0; i < weightsArray.length; ++i){
+                weightsArray[i] /= weightsSum;
+            }
+
+            //fourth layer
+            double[] qArray = new double[RULES_NUMBER];
+            for (int i = 0; i < qArray.length; ++i){
+                fourthLayerNeurons[i].setVariables(Arrays.copyOfRange(row, 0, 3));
+                fourthLayerNeurons[i].setW(weightsArray[i]);
+                qArray[i] = fourthLayerNeurons[i].calculateQ();
+            }
+
+            //fifth layer
+            double result = Arrays.stream(qArray).sum();
+
+            System.out.println(result - row[3]);
+        }*/
+
+
+        System.out.println("================================================");
+        for (double[] row : dataForTests) {
+            //first and seconds layers
+            for (int i = 0; i < 3; ++i)
+                firstLayerNeurons[i].setX(row[0]);
+
+            for (int i = 3; i < 6; ++i)
+                firstLayerNeurons[i].setX(row[1]);
+
+            for (int i = 6; i < firstLayerNeurons.length; ++i)
+                firstLayerNeurons[i].setX(row[2]);
+
+            double[] weightsArray = new double[RULES_NUMBER];
+
+            for (int i = 0; i < weightsArray.length; ++i){
+                for (int j = i; j < firstLayerNeurons.length; j += RULES_NUMBER){
+                    weightsArray[i] += firstLayerNeurons[j].getPhasiValue();
+                }
+            }
+
+            //third layer
+            double weightsSum = Arrays.stream(weightsArray).sum();
+            for (int i = 0; i < weightsArray.length; ++i){
+                weightsArray[i] /= weightsSum;
+            }
+
+            //fourth layer
+            double[] qArray = new double[RULES_NUMBER];
+            for (int i = 0; i < qArray.length; ++i){
+                fourthLayerNeurons[i].setVariables(Arrays.copyOfRange(row, 0, 3));
+                fourthLayerNeurons[i].setW(weightsArray[i]);
+                qArray[i] = fourthLayerNeurons[i].calculateQ();
+            }
+
+            //fifth layer
+            double result = Arrays.stream(qArray).sum();
+            System.out.println(Arrays.toString(row));
+            System.out.println("Result: " + result);
+            System.out.println();
+        }
     }
 
     private void normalizeData(){
